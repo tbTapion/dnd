@@ -1,0 +1,67 @@
+---
+//Just in case I want to increase it later
+const links = [
+  {
+    title: "Sheet",
+    href: "/",
+  },
+  {
+    title: "Create",
+    href: "/create",
+  },
+];
+---
+
+<header class="shadow">
+  <div class="flex flex-row items-center font-mono max-w-6xl mx-auto justify-between">
+    <div class="flex flex-row items-center">
+      <h2 class="p-4 pl-0 text-2xl">SHEETS</h2>
+      <span class="text-xl">.</span>
+      {
+        links.map((link) => (
+          <a
+            class="p-2 mt-1 text-lg hover:bg-orange-700 hover:text-white hover:rounded-md"
+            href={link.href}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </div>
+    <save-sheet class="text-lg">
+        <!-- TODO: Make these icons -->
+        <button id="save" class="p-2 mt-1">Save</button>
+        <button id="download" class="p-2 mt-1">Download</button>
+        <button id="upload" class="p-2 mt-1">Upload</button>
+    </save-sheet>
+  </div>
+</header>
+
+<script>
+    class SaveSheet extends HTMLElement {
+        constructor() {
+            super();
+
+            const saveButton = this.querySelector("#save");
+            const downloadButton = this.querySelector("#download");
+            const uploadButton = this.querySelector("#upload");
+            
+            saveButton?.addEventListener("click", () => {
+                alert("Maybe we can save something!")
+                //TODO: Save to local storage
+            });
+
+            downloadButton?.addEventListener("click", () => {
+                alert("Maybe we can download something!")
+                //TODO: Take data from local storage and download as json
+            });
+
+            uploadButton?.addEventListener("click", () => {
+                alert("Maybe we can upload something!")
+                //TODO: Take data from local storage and download as json
+            });
+        }
+    }
+    
+    customElements.define("save-sheet", SaveSheet);
+</script>
