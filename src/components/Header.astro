@@ -15,7 +15,7 @@ const links = [
 <header class="shadow">
   <div class="flex flex-row items-center font-mono max-w-6xl mx-auto justify-between">
     <div class="flex flex-row items-center">
-      <h2 class="p-4 pl-0 text-2xl">SHEETS</h2>
+      <p class="p-4 pl-0 text-2xl">SHEETS</p>
       <span class="text-xl">.</span>
       {
         links.map((link) => (
@@ -42,24 +42,12 @@ const links = [
         constructor() {
             super();
 
-            const saveButton = this.querySelector("#save");
-            const downloadButton = this.querySelector("#download");
-            const uploadButton = this.querySelector("#upload");
-            
-            saveButton?.addEventListener("click", () => {
-                alert("Maybe we can save something!")
-                //TODO: Save to local storage
-            });
-
-            downloadButton?.addEventListener("click", () => {
-                alert("Maybe we can download something!")
-                //TODO: Take data from local storage and download as json
-            });
-
-            uploadButton?.addEventListener("click", () => {
-                alert("Maybe we can upload something!")
-                //TODO: Take data from local storage and download as json
-            });
+            const buttons = this.querySelectorAll("button") ?? [];
+            buttons.forEach(button => {
+              button.addEventListener("click", () => {
+                alert(`Maybe we can ${button.id} something!`)
+              })
+            })
         }
     }
     
