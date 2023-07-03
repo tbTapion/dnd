@@ -38,14 +38,24 @@ const links = [
 </header>
 
 <script>
+
     class SaveSheet extends HTMLElement {
         constructor() {
             super();
 
             const buttons = this.querySelectorAll("button") ?? [];
             buttons.forEach(button => {
-              button.addEventListener("click", () => {
-                alert(`Maybe we can ${button.id} something!`)
+              button.addEventListener("click", async () => {
+                if(button.id === "download") {
+                  const result = await fetch("/dnd/load")
+                  const data = await result.json();
+                  console.log(data);
+                  if(data.error){
+                    alert("Something went wrong: " + data.error);
+                  }
+                }else{
+                  alert(`Maybe we can ${button.id} something!`)
+                }
               })
             })
         }
