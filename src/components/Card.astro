@@ -1,0 +1,14 @@
+---
+const theme = localStorage.getItem("dnd-sheets-theme") ?? "dark"
+const {marginX, marginY, paddingX, paddingY} = Astro.props
+const classes = [`mx-${marginX ?? 0}`,`my-${marginY ?? 0}`, `px-${paddingX ?? 0}`, `py-${paddingY ?? 0}`, "bg-" + (theme==="light" ? "white" : "black")]
+console.log(classes);
+---
+<div class="flex font-mono flex-col">
+    <div>
+        This is the top of the card
+    </div>
+    <div class="font-mono border-slate-950" class:list={[...classes]}>
+        <slot />
+    </div>
+</div>

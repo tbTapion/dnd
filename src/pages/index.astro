@@ -1,7 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
 ---
 
 <Layout title="SHEETS">
 	<p>Display DnD Sheet here</p>
+	<div class="flex">
+		 <Card marginX="3" marginY="4" paddingX="8" paddingY="8" class="flex">
+			<div>This is some nice content</div>
+		 </Card>
+	</div>
 </Layout>

@@ -42,12 +42,21 @@ const links = [
       <div><button class="m-2 text-md hover:bg-slate-300 w-8 flex justify-center burger-menu-button"><i class="material-icons">menu</i></button></div>
     </div>
   </div>
-  <div id="burger-menu" class="w-full fixed bg-white hidden flex-col sm:hidden">
+  <div id="burger-menu" class="w-full h-screen fixed bg-white hidden flex-col sm:hidden">
     <save-sheet class="text-lg flex flex-col w-full justify-center items-center">
       <!-- TODO: Make these icons -->
-      <button id="save" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200"><i class="material-icons ml-10">save</i> <span class="mr-10">SAVE</span></button>
-      <button id="download" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200""><i class="material-icons  ml-10">cloud_download</i> <span class="mr-10">DOWNLOAD</span></button>
-      <button id="upload" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200""><i class="material-icons  ml-10">backup</i> <span class="mr-10">UPLOAD</span></button>
+      <button id="save" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200">
+        <i class="material-icons ml-10">save</i>
+        <span class="mr-10">SAVE</span>
+      </button>
+      <button id="download" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200">
+        <i class="material-icons  ml-10">cloud_download</i>
+        <span class="mr-10">DOWNLOAD</span>
+      </button>
+      <button id="upload" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200">
+        <i class="material-icons  ml-10">backup</i>
+        <span class="mr-10">UPLOAD</span>
+      </button>
     </save-sheet>
   </div>
 </header>
