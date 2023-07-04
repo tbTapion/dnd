@@ -10,34 +10,59 @@ const links = [
     href: "/dnd/create",
   },
 ];
+
 ---
 
 <header class="shadow">
-  <div class="flex flex-row items-center font-mono max-w-6xl mx-auto justify-between">
-    <div class="flex flex-row items-center">
-      <p class="p-4 pl-0 text-2xl">SHEETS</p>
-      <span class="text-xl">.</span>
-      {
-        links.map((link) => (
-          <a
-            class="p-2 mt-1 text-lg hover:bg-orange-700 hover:text-white hover:rounded-md"
-            href={link.href}
-          >
-            {link.title}
-          </a>
-        ))
-      }
+  <div>
+    <div class="main-header flex-row items-center font-mono max-w-6xl mx-auto justify-between hidden sm:flex">
+      <div class="flex flex-row items-center ml-4">
+        <p class="p-4 pl-0 text-2xl">SHEETS</p>
+        <span class="text-xl">.</span>
+        {
+          links.map((link) => (
+            <a
+              class="p-2 mt-1 text-lg hover:bg-orange-700 hover:text-white hover:rounded-md"
+              href={link.href}
+            >
+              {link.title}
+            </a>
+          ))
+        }
+      </div>
+      <save-sheet class="text-lg flex flex-row w-24 justify-between mr-8">
+          <!-- TODO: Make these icons -->
+          <button id="save" class="w-4 p-2 mt-1 flex items-center hover:text-orange-700"><i class="material-icons">save</i></button>
+          <button id="download" class="w-4 p-2 mt-1 flex items-center hover:text-orange-700"><i class="material-icons">cloud_download</i></button>
+          <button id="upload" class="w-4 p-2 mt-1 flex items-center hover:text-orange-700"><i class="material-icons">backup</i></button>
+      </save-sheet>
     </div>
-    <save-sheet class="text-lg">
-        <!-- TODO: Make these icons -->
-        <button id="save" class="p-2 mt-1">Save</button>
-        <button id="download" class="p-2 mt-1">Download</button>
-        <button id="upload" class="p-2 mt-1">Upload</button>
+    <div class="burger-menu flex flex-row sm:hidden items-center font-mono justify-between">
+      <p class="p-2 text-lg">SHEETS</p>
+      <div><button class="m-2 text-md hover:bg-slate-300 w-8 flex justify-center burger-menu-button"><i class="material-icons">menu</i></button></div>
+    </div>
+  </div>
+  <div id="burger-menu" class="w-full fixed bg-white hidden flex-col sm:hidden">
+    <save-sheet class="text-lg flex flex-col w-full justify-center items-center">
+      <!-- TODO: Make these icons -->
+      <button id="save" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200"><i class="material-icons ml-10">save</i> <span class="mr-10">SAVE</span></button>
+      <button id="download" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200""><i class="material-icons  ml-10">cloud_download</i> <span class="mr-10">DOWNLOAD</span></button>
+      <button id="upload" class="w-full p-2 mt-1 flex items-center justify-between hover:text-orange-700 hover:bg-slate-200""><i class="material-icons  ml-10">backup</i> <span class="mr-10">UPLOAD</span></button>
     </save-sheet>
   </div>
 </header>
 
 <script>
+
+    const burgerButtons = document.querySelectorAll(".burger-menu-button");
+    const burgerMenu = document.querySelector("#burger-menu")
+
+    burgerButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        burgerMenu?.classList.toggle("hidden")
+        burgerMenu?.classList.toggle("flex")
+      })
+    })
 
     class SaveSheet extends HTMLElement {
         constructor() {
